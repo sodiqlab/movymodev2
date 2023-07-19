@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>SoSoTV</title>
+    <!-- Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/splash.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/movie.css">
+    <!--Api-->
+    <script src="essentials.js"></script>
+    <script src="api.js"></script>
+    <!-- Utils -->
+  </head>
+  <body>
+    <section class="animate__animated" id="splash-screen" style="display: none;">
+      <h1>Welcome to SoSoMovies Productions<hr class="mt-2"></h1>
+      <p>Your new place to find the best of entertainment!</p>
+    </section>
+    <div style="display: none;" id="page-wrapper" class="animate__animated">
+      <header>
+        <h1 class="ml-3">SoSoTV</h1>
+        <div>
+          <div class="input-group mb-1" id="searchcont">
+            <span class="input-group-text" style="border-radius: 0.25rem 0 0 0.25rem"> &#128269; </span>
+            <form id="search">
+              <input type="text" class="form-control" placeholder="Search" style="border-radius: 0 0.25rem 0.25rem 0">
+            </form>
+          </div>
+        </div>
+        <ul style="border:0;" class="nav nav-tabs" id="page-select" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true" data-order="0">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="movie-tab" data-toggle="tab" href="#movie" role="tab" aria-controls="movies" aria-selected="false" data-order="1">Movies</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="tv-tab" data-toggle="tab" href="#tv" role="tab" aria-controls="tv-shows" aria-selected="false" data-order="2">TV Shows</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="watchlist" data-toggle="tab" href="#watch" role="tab" aria-controls="watchlist" aria-selected="false" data-order="3">Watchlist</a>
+          </li>
+        </ul>
+      </header>
+      <section id="page-content" class="animate__animated">
+        <div class="tab-content">
+          <div class="tab-pane show active animate__animated" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <h1 class="home-title">In Theaters</h1>
+            <div id="now-playing" class="carousel slide" data-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active"></div>
+                <div class="carousel-item"></div>
+                <div class="carousel-item"></div>
+                <div class="carousel-item"></div>
+              </div>
+            </div>
+            <h1 class="home-title">Now Airing</h1>
+            <div id="now-airing" class="carousel slide" data-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active"></div>
+                <div class="carousel-item"></div>
+                <div class="carousel-item"></div>
+                <div class="carousel-item"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane animate__animated" id="movie" role="tabpanel" aria-labelledby="movies-tab">
+            <div class="filter-and-sort">
+              <span class="ml-2 mr-2" style="min-width: fit-content;">Sort by:</span>
+              <select id="movie-sort-criteria" class="btn">
+                <option selected value="popularity.desc">Most Popular</option>
+                <option value="primary_release_date.desc">Release Date</option>
+                <option value="vote_average.desc">TMDB Rating</option>
+              </select>
+              <button style="min-width: fit-content;" class="genre-button mr-2 ml-2" data-type="movie">Select Genres...</button>
+              <span>Genres:</span>
+              <div id="movie-filter-genre-list" class="genre-list">All</div>
+              <button style="min-width: fit-content;" id="movie-filter-submit" class="filter-submit mr-2">Sort & Filter</button>
+            </div>
+            <div class="grid-list" id="movie-grid"></div>
+          </div>
+
+          <div class="tab-pane animate__animated" id="tv" role="tabpanel" aria-labelledby="tv-tab">
+            <div class="filter-and-sort">
+              <span class="ml-2 mr-2" style="min-width: fit-content;">Sort by:</span>
+              <select id="tv-sort-criteria" class="btn">
+                <option selected value="popularity.desc">Most Popular</option>
+                <option value="primary_release_date.desc">Release Date</option>
+                <option value="vote_average.desc">TMDB Rating</option>
+              </select>
+              <button style="min-width: fit-content;" class="genre-button mr-2 ml-2" data-type="tv">Select Genres...</button>
+              <span>Genres:</span>
+              <div id="tv-filter-genre-list" class="genre-list">All</div>
+              <button style="min-width: fit-content;" id="tv-filter-submit" class="filter-submit mr-2">Sort & Filter</button>
+            </div>
+            <div class="grid-list" id="tv-grid"></div>
+          </div>
+          <div class="tab-pane animate__animated" id="watch" role="tabpanel" aria-labelledby="watchlist">
+            <div id="movieList" class="mediaList"></div>
+            <div id="tvList" class="mediaList"></div>
+          </div>
+        </div>
+      </section>
+      <!-- Media Modal -->
+      <div style="overflow-y:hidden;" class="modal fade" id="media-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered d-flex justify-content-center" role="document">
+          <div id="media-modal-container" class="modal-content" style="width:auto">
+            <div id="media-modal-body"></div>
+            <div id="media-modal-loading-screen">Loading...</div>
+          </div>
+        </div>
+      </div>
+      <!-- Genre Modal -->
+      <div class="modal fade" id="genre-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered d-flex justify-content-center" role="document">
+          <div id="genre-modal-container" class="modal-content" style="width:auto">
+            <div class="modal-header">
+              <h5 id="genre-modal-title" class="modal-title"></h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">&times;</button>
+            </div>
+            <div id="genre-modal-body"></div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-close btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button id="genre-modal-submit" type="button" class="btn btn-primary">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="userData.js"></script>
+  <script src="Renderer.js" charset="utf-8"></script>
+  <script src="home.js" charset="utf-8"></script>
+  <script src="index.js" charset="utf-8"></script>
+</html>

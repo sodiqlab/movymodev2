@@ -1,0 +1,31 @@
+header {
+  top: 0;
+  position: sticky;
+  height: 6em;
+  background-color: rgb(49, 49, 49);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  z-index: 1;
+}
+
+header .nav-link {
+  border: 0!important;
+  color: lavender;
+  transition: color 0.5s, background-color 0.5s;
+}
+
+header .nav-link.active {
+  background-color: lavender!important;
+}
+
+header .nav-link:hover {
+  color: blue;
+  background-color: white;
+}
+
+header h1 {
+  color: lavender;
+  margin: 0;
+  font-size: 3em;
+}

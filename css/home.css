@@ -1,0 +1,26 @@
+.media-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.media-list {
+  display: flex;
+  overflow-x: scroll;
+}
+
+.carousel-item.active, .carousel-item-next, .carousel-item-prev {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.carousel-inner {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.home-title {
+  font-weight: 300;
+  padding: 0.5em;
+  margin: 0;
+  font-size: 2em;
+}

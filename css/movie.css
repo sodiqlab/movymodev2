@@ -1,0 +1,167 @@
+/* Home page now playing */
+
+.media {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+#page-content {
+  background-color: lavender;
+}
+
+.media-img {
+  width: 100%;
+}
+
+.genre-item {
+  display: flex;
+  align-items: center;
+  padding: 0.5em 1em 0 1em;
+}
+
+.genre-item label {
+  margin-bottom: 0;
+  margin-left: 0.5em;
+}
+
+#genre-modal-body {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr)
+}
+
+.filter-and-sort {
+  display: flex;
+  align-items: center;
+  top: 6em;
+  height: 3em;
+  position: sticky;
+  background-color: rgba(230,230,250,0.8);
+  z-index: 1;
+}
+
+.filter-and-sort select{
+  background-color: white;
+  border: 1px solid black;
+}
+
+.genre-list {
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.genre-list-item {
+  margin-left: 0.5em;
+}
+
+.filter-submit {
+  margin-left: auto;
+}
+
+/* section for home */
+
+.network-airdate {
+    margin: 0;
+}
+
+.tv-network-img {
+  height: 5em;
+  width: 100%;
+  margin: 0;
+  object-fit: contain;
+}
+.network-info {
+    margin: 0;
+}
+
+.media-movie-title, .media-tv-title {
+  text-align: center;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.media-movie-hover p, .media-tv-hover p {
+  font-size: 0.8em;
+  text-align: center;
+  margin: 0;
+}
+
+.media-movie-hover, .media-tv-hover {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  padding: 0 0.5em;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  color: black;
+  font-family: 'Quicksand', sans-serif;
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.media-movie-hover:hover, .media-tv-hover:hover {
+  opacity: 1;
+}
+
+.media-info-container:hover {
+  transform: translateY(0);
+}
+
+.media-modal-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.55) 5%, rgba(0,0,0,0.77) 10%, rgba(0,0,0,0.87) 15%, rgba(0,0,0,0.9) 25%, rgba(0,0,0,1) 100%);
+  position: absolute;
+  height: 50%;
+  width: 100%;
+  color: white;
+  padding: 1.5em;
+}
+
+
+.media-modal-overview {
+  max-height: 30%;
+  overflow-y: scroll;
+  padding-right: 0.5em;
+}
+
+::-webkit-scrollbar {
+    width: 0em;
+    background-color: black;
+    padding: 0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: white;
+}
+
+.grid-list {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    background-color: rgb(255, 255, 255);
+}
+/* movie search results */
+.moviebody {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  background-color: black;
+}
+/* tvshow search results */
+.tvsbody {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  background-color: black;
+}
+
+/* watch list mediapage */
+#movieList {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
